@@ -1,4 +1,10 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.FindByNameAsync(User.Identity.Name);
+
+
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +68,7 @@
                 <!-- .top-bar-brand -->
                 <div class="top-bar-brand">
                     <a href="index.html">
-                        <img src="~/assets/images/brand-inverse.png" height="32" alt="">
+                        <h2 style="font-weight:bold;">EYE REMOTE</h2>
                     </a>
                 </div>
                 <!-- /.top-bar-brand -->
@@ -379,7 +385,7 @@
                                 <a class="dropdown-item" href="user-profile.html">
                                     <span class="dropdown-icon oi oi-person"></span> Profile
                                 </a>
-                                <a class="dropdown-item" href="auth-signin-v1.html">
+                                <a class="dropdown-item" href="/Account/Logout">
                                     <span class="dropdown-icon oi oi-account-logout"></span> Logout
                                 </a>
                                 <div class="dropdown-divider"></div>
@@ -451,6 +457,8 @@
                                     <span class="menu-text">Dashboard</span>
                                 </a>
                             </li>
+
+
                             <li class="menu-item">
                                 <a href="/Company/CreateClaim" class="menu-link">
                                     <span class="menu-icon oi oi-dashboard"></span>
@@ -463,12 +471,41 @@
                                     <span class="menu-text">Add User To Company</span>
                                 </a>
                             </li>
+
                             <li class="menu-item">
-                                <a href="/Company/MonthlyAmount" class="menu-link">
+                                <a href="/Rufet/Task/CreateTask" class="menu-link">
+                                    <span class="menu-icon oi oi-dashboard"></span>
+                                    <span class="menu-text">Create Task</span>
+                                </a>
+                            </li>
+
+                            <li class="menu-item">
+                                <a href="/Company/MonthlySalary" class="menu-link">
                                     <span class="menu-icon oi oi-dashboard"></span>
                                     <span class="menu-text">Monthly Amount</span>
                                 </a>
                             </li>
+                            <li class="menu-item">
+                                <a href="/Rufet/Announcment/GetAnnouncments" class="menu-link">
+                                    <span class="menu-icon oi oi-dashboard"></span>
+                                    <span class="menu-text">All Announcments</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/Rufet/Announcment/CreateAnnouncment" class="menu-link">
+                                    <span class="menu-icon oi oi-dashboard"></span>
+                                    <span class="menu-text">Create Announcment</span>
+                                </a>
+                            </li>
+                            @if (user.Role == Role.SuperAdmin)
+                            {
+                                <li class="menu-item">
+                                    <a href="/Home/GetContarcts" class="menu-link">
+                                        <span class="menu-icon oi oi-dashboard"></span>
+                                        <span class="menu-text">Get Contracts</span>
+                                    </a>
+                                </li>
+                            }
                             <!-- /.menu-item -->
                             <!-- .menu-item -->
                         </ul>

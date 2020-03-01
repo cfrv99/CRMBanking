@@ -18,6 +18,7 @@ namespace CRMApp.Models
         public int? CardId { get; set; }
         public string Signature { get; set; }
         public string Tel { get; set; }
+        public Role Role { get; set; }
         public string Address { get; set; }
         public Card Card { get; set; }
         public int? ClaimId { get; set; }
@@ -29,6 +30,11 @@ namespace CRMApp.Models
         public List<Product> Products { get; set; }
 
     }
-
+    public enum Role
+    {
+        Staff=0,
+        Customer=1,
+        SuperAdmin=2
+    }
 
 }

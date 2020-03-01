@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Company>
+@{
+    ViewData["Title"] = "Companies";
+}
+<div class="metric-row">
+    <!-- metric column -->
+            @foreach (var item in Model)
+            {
+    <div class="col-12 col-sm-6 col-lg-3">
+        <!-- .metric -->
+        <div class="card-metric">
+
+                <div class="metric">
+                    <p class="metric-value h3">
+                        <sub>
+                            <i class="oi oi-fork"></i>
+                        </sub>
+                        <span class="value">@item.Name</span>
+                    </p>
+                    <h2 class="metric-label"> Company </h2>
+                </div>
+        </div>
+        <!-- /.metric -->
+    </div>
+            }
+    <!-- /metric column -->
+    <!-- metric column -->
+    <!-- /metric column -->
+</div>
+<!-- /metric row -->
+                
+
+
+

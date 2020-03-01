@@ -9,13 +9,18 @@ namespace CRMApp.Areas.Rufet.Models
     public class ListOfTasksVM
     {
         private readonly AppDbContext appDbContext;
+        public ListOfTasksVM()
+        {
+
+        }
         public ListOfTasksVM(AppDbContext _appDbContext)
         {
             appDbContext = _appDbContext;
         }
 
-        public List<JobTask> Tasks { get { return appDbContext.JobTasks.ToList(); } }
-
-
+        public List<JobTask> Tasks { get; set; }
     }
+
+
 }
+

@@ -4,14 +4,16 @@ using CRMApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CRMApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200301023456_salam1")]
+    partial class salam1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,17 +205,11 @@ namespace CRMApp.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<string>("CreatorId");
-
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatorId")
-                        .IsUnique()
-                        .HasFilter("[CreatorId] IS NOT NULL");
 
                     b.ToTable("Companies");
                 });
@@ -586,13 +582,6 @@ namespace CRMApp.Migrations
                     b.HasOne("CRMApp.Models.Company", "Company")
                         .WithMany("Claims")
                         .HasForeignKey("CompanyId");
-                });
-
-            modelBuilder.Entity("CRMApp.Models.Company", b =>
-                {
-                    b.HasOne("CRMApp.Models.AppUser", "Creator")
-                        .WithOne()
-                        .HasForeignKey("CRMApp.Models.Company", "CreatorId");
                 });
 
             modelBuilder.Entity("CRMApp.Models.CompanyContract", b =>

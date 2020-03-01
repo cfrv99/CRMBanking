@@ -4,68 +4,74 @@
     ViewData["Title"] = "CreateTask";
 }
 
-<h1>CreateTask</h1>
 
-<h4>JobTask</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+
+<section id="base-style" class="card">
+    <!-- .card-body -->
+    <div class="card-body  col-5">
+        <!-- .form -->
         <form asp-action="CreateTask">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="@Model.JobTask.Id" class="control-label"></label>
-                <input asp-for="@Model.JobTask.Id" class="form-control" />
-                <span asp-validation-for="@Model.JobTask.Id" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="@Model.JobTask.Name" class="control-label"></label>
-                <input asp-for="@Model.JobTask.Name" class="form-control" />
-                <span asp-validation-for="@Model.JobTask.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.JobTask.Description" class="control-label"></label>
-                <input asp-for="@Model.JobTask.Description" class="form-control" />
-                <span asp-validation-for="@Model.JobTask.Description" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="@Model.JobTask.Status" class="control-label"></label>
-                <input asp-for="@Model.JobTask.Status" class="form-control" />
-                <span asp-validation-for="@Model.JobTask.Status" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="@Model.JobTask.Amount" class="control-label"></label>
-                <input asp-for="@Model.JobTask.Amount" class="form-control" />
-                <span asp-validation-for="@Model.JobTask.Amount" class="text-danger"></span>
-            </div>
+            <!-- .fieldset -->
+            <fieldset>
+                <legend>Create User For My Company</legend>
+                <!-- .form-group -->
+                <!-- /.form-group -->
+                <!-- .form-group -->
+                <div class="form-group">
+                    <label for="tf4">Namee</label>
+                    <div class="has-clearable">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">
+                                <i class="fa fa-times-circle"></i>
+                            </span>
+                        </button>
+                        <input type="text" class="form-control" asp-for="@Model.JobTask.Name" placeholder="Name" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.JobTask.Description">Textarea</label>
+                    <textarea class="form-control" asp-for="@Model.JobTask.Description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tf4">Amount</label>
+                    <div class="has-clearable">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">
+                                <i class="fa fa-times-circle"></i>
+                            </span>
+                        </button>
+                        <input type="text" class="form-control" asp-for="@Model.JobTask.Amount" placeholder="Amount" value="">
+                    </div>
+                </div>
+                <!-- /.form-group -->
+                <!-- .form-group -->
+                
 
-            <div class="form-group">
-                <label asp-for="@Model.JobTask.CreatedAt" class="control-label"></label>
-                <input asp-for="@Model.JobTask.CreatedAt" class="form-control" />
-                <span asp-validation-for="@Model.JobTask.CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.JobTask.DeadLine" class="control-label"></label>
-                <input asp-for="@Model.JobTask.DeadLine" class="form-control" />
-                <span asp-validation-for="@Model.JobTask.DeadLine" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+                <div class="form-group">
+                    <label for="tf2">Start Time</label>
+                    <input type="date" class="form-control" asp-for="@Model.JobTask.CreatedAt" placeholder="Start Time">
+                </div>
+                <div class="form-group">
+                    <label for="tf2">Deadline Time</label>
+                    <input type="date" class="form-control" asp-for="@Model.JobTask.DeadLine" placeholder="Deadline Time">
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-form-label" for="selDefault">Role</label>
+                    <select class="custom-select" asp-for="ClaimId" asp-items="ViewBag.Claims">
+                        <option> Default select </option>
+                    </select>
+                </div>
 
-                <select asp-items="@ViewBag.Claims" asp-for="@Model.ClaimId">
-                    <option selected disabled> </option>
-
-                </select>
-                 
-                 
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Create Task" />
+                </div>
+                <!-- /.form-group -->
+            </fieldset>
+            <!-- /.fieldset -->
         </form>
+        <!-- /.form -->
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+   
+</section>
 

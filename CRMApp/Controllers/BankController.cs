@@ -26,18 +26,6 @@ namespace CRMApp.Controllers
             return View(data);
         }
 
-
-        //[HttpGet]
-        //public IActionResult Accept(int requestId)
-        //{
-        //    var request = context.Requests.FirstOrDefault(i => i.Id == requestId);
-        //    request.IsAccepted = true;
-
-
-        //    context.SaveChanges();
-        //    return View();
-        //}
-
         [HttpGet]
         public IActionResult Accept(int requestId)
         {

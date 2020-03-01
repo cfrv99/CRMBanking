@@ -6,56 +6,89 @@
 
 <h1>CreateAnnouncment</h1>
 
-<h4>AnnouncementWork</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateAnnouncment">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="@Model.Announcement.Id" class="control-label"></label>
-                <input asp-for="@Model.Announcement.Id" class="form-control" />
-                <span asp-validation-for="@Model.Announcement.Id" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="@Model.Announcement.Title" class="control-label"></label>
-                <input asp-for="@Model.Announcement.Title" class="form-control" />
-                <span asp-validation-for="@Model.Announcement.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Announcement.Description" class="control-label"></label>
-                <input asp-for="@Model.Announcement.Description" class="form-control" />
-                <span asp-validation-for="@Model.Announcement.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.Announcement.MinSalary" class="control-label"></label>
-                <input asp-for="@Model.Announcement.MinSalary" class="form-control" />
-                <span asp-validation-for="@Model.Announcement.MinSalary" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+@*<h4>AnnouncementWork</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateAnnouncment">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Announcement.Id" class="control-label"></label>
+                    <input asp-for="@Model.Announcement.Id" class="form-control" />
+                    <span asp-validation-for="@Model.Announcement.Id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Announcement.Title" class="control-label"></label>
+                    <input asp-for="@Model.Announcement.Title" class="form-control" />
+                    <span asp-validation-for="@Model.Announcement.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Announcement.Description" class="control-label"></label>
+                    <input asp-for="@Model.Announcement.Description" class="form-control" />
+                    <span asp-validation-for="@Model.Announcement.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Announcement.MinSalary" class="control-label"></label>
+                    <input asp-for="@Model.Announcement.MinSalary" class="form-control" />
+                    <span asp-validation-for="@Model.Announcement.MinSalary" class="text-danger"></span>
+                </div>
+                <div class="form-group">
 
-                <select asp-items="@ViewBag.Claims" asp-for="@Model.ClaimId">
-                    <option selected disabled > </option>
-                  
-                </select>
+                    <select asp-items="@ViewBag.Claims" asp-for="@Model.ClaimId">
+                        <option selected disabled > </option>
 
-               
+                    </select>
 
-                @*<label asp-for="ClaimId" class="control-label"></label>
-                <input asp-for="ClaimId" class="form-control" />
-                <span asp-validation-for="ClaimId" class="text-danger"></span>*@
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+
+                    <label asp-for="ClaimId" class="control-label"></label>
+                    <input asp-for="ClaimId" class="form-control" />
+                    <span asp-validation-for="ClaimId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<section id="base-style" class="card">
+    <!-- .card-body -->
+    <div class="card-body  col-5">
+        <!-- .form -->
+        <form asp-action="CreateAnnouncment">
+            <!-- .fieldset -->
+            <fieldset>
+                <legend>Create Announcement</legend>
+                <!-- .form-group -->
+                <!-- /.form-group -->
+                <!-- .form-group -->
+                <div class="form-group">
+                    <label for="tf4">Namee</label>
+                    <div class="has-clearable">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">
+                                <i class="fa fa-times-circle"></i>
+                            </span>
+                        </button>
+                        <input type="text" class="form-control" asp-for="Announcement" placeholder="Announcment" value="">
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Create Task" />
+                </div>
+                <!-- /.form-group -->
+            </fieldset>
+            <!-- /.fieldset -->
+        </form>
+        <!-- /.form -->
+    </div>
+
+</section>
+

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Login";
+    Layout = null;
 }
 
 @*<h1>Login</h1>
@@ -32,31 +33,163 @@
     <div>
         <a asp-action="Index">Back to List</a>
     </div>*@
-<div id="middle" >
+@*<div id="middle" >
 
-    <form asp-action="Login" class="form">
-        <div class="fromheading">
-            <!-- <img height="50" width="200" src="../../assets/media/freelance-logo.png" alt=""> -->
-        </div>
-        <span class="formwelcome">Welcome Back</span>
+        <form asp-action="Login" class="form">
+            <div class="fromheading">
+                 <img height="50" width="200" src="../../assets/media/freelance-logo.png" alt="">
+            </div>
+            <span class="formwelcome">Welcome Back</span>
 
-        <div class="fromdivider">
-            <span>OR</span>
-        </div>
-        <div class="forminputs">
-            <input class="focus email col-s-12 rounded" placeholder="Email address" asp-for="Email" />
-            <input class="focus col-s-12 rounded" type="password" placeholder="Password" asp-for="Password" />
-        </div>
-        <div class="login" id="nfb">
-            <button class="col-s-12 rounded btn btn-login">
-                Login In
-            </button>
-        </div>
-        <hr class="w-100" />
-        <span class="redirectSignUp">
-            Don't have an account? <a class="text-underlineonhover">Sign up</a>
-        </span>
-    </form>
-</div>
+            <div class="fromdivider">
+                <span>OR</span>
+            </div>
+            <div class="forminputs">
+                <input class="focus email col-s-12 rounded" placeholder="Email address" asp-for="Email" />
+                <input class="focus col-s-12 rounded" type="password" placeholder="Password" asp-for="Password" />
+            </div>
+            <div class="login" id="nfb">
+                <button class="col-s-12 rounded btn btn-login">
+                    Login In
+                </button>
+            </div>
+            <hr class="w-100" />
+            <span class="redirectSignUp">
+                Don't have an account? <a class="text-underlineonhover">Sign up</a>
+            </span>
+        </form>
+    </div>*@
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- End Required meta tags -->
+    <!-- Begin SEO tag -->
+    <title> Sign In | Looper - Bootstrap 4 Admin Theme </title>
+    <meta property="og:title" content="Sign In">
+    <meta name="author" content="Beni Arisandi">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Responsive admin theme build on top of Bootstrap 4">
+    <meta property="og:description" content="Responsive admin theme build on top of Bootstrap 4">
+    <link rel="canonical" href="//uselooper.com">
+    <meta property="og:url" content="//uselooper.com">
+    <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
+    <script type="application/ld+json">
+        {
+        "name": "Looper - Bootstrap 4 Admin Theme",
+        "description": "Responsive admin theme build on top of Bootstrap 4",
+        "author":
+        {
+        "@@type": "Person",
+        "name": "Beni Arisandi"
+        },
+        "@@type": "WebSite",
+        "url": "",
+        "headline": "Sign In",
+        "@@context": "http://schema.org"
+        }
+    </script>
+    <!-- End SEO tag -->
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/assets/apple-touch-icon.png">
+    <link rel="shortcut icon" href="~/assets/favicon.ico">
+    <meta name="theme-color" content="#3063A0">
+    <!-- BEGIN BASE STYLES -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/fontawesome-all.min.css">
+    <!-- END BASE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" href="~/assets/stylesheets/main.min.css">
+    <link rel="stylesheet" href="~/assets/stylesheets/custom.css">
+    <!-- END THEME STYLES -->
+</head>
+<body>
+    <!-- .auth -->
+    <main class="auth auth-floated">
+        <!-- form -->
+        <form asp-action="Login" class="auth-form">
+            <div class="mb-4">
+                <div class="mb-3">
+                    <h2 style="font-weight">EYE REMOTE</h2>
+                </div>
+                <h1 class="h3"> Sign In </h1>
+            </div>
+            <p class="text-left mb-4">
+                Don't have a account?
+                <a href="auth-signup.html">Create One</a>
+            </p>
+            <!-- .form-group -->
+            <div class="form-group mb-4">
+                <label class="d-block text-left" for="inputUser">Email Address</label>
+                <input type="text" asp-for="Email" class="form-control form-control-lg" required="" autofocus="">
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group mb-4">
+                <label class="d-block text-left" for="inputPassword">Password</label>
+                <input type="password" asp-for="Password" class="form-control form-control-lg" required="">
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group mb-4">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group text-center">
+                <div class="custom-control custom-control-inline custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="remember-me">
+                    <label class="custom-control-label" for="remember-me">Keep me sign in</label>
+                </div>
+            </div>
+            <!-- /.form-group -->
+            <!-- recovery links -->
+            <p class="py-3">
+                <a href="auth-recovery-username.html" class="link">Forgot Username?</a>
+                <span class="mx-2">·</span>
+                <a href="auth-recovery-password.html" class="link">Forgot Password?</a>
+            </p>
+            <!-- /recovery links -->
+            <!-- copyright -->
+            <p class="px-3 text-muted text-center">
+                © 2018 All Rights Reserved. Loper is Responsive Admin Theme build on top of latest Bootstrap 4.
+                <a href="#">Privacy</a> and
+                <a href="#">Terms</a>
+            </p>
+        </form>
+        <!-- /.auth-form -->
+        <!-- .auth-announcement -->
+        <section id="announcement" class="auth-announcement" style="background-image: url(/assets/images/illustration/img-1.png);">
+            <div class="announcement-body">
+                <h2 class="announcement-title"> Welcome to here </h2>
+                
+            </div>
+        </section>
+        <!-- /.auth-announcement -->
+    </main>
+    <!-- /.auth -->
+    <!-- BEGIN PLUGINS JS -->
+    <script src="~/assets/vendor/particles.js/particles.min.js"></script>
+    <script>
+      /* particlesJS.load(@@dom-id, @@path-json, @@callback (optional)); */
+      particlesJS.load('announcement', 'assets/javascript/particles.json');
+    </script>
+    <!-- END PLUGINS JS -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116692175-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-116692175-1');
+    </script>
+</body>
+</html>

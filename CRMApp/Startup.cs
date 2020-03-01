@@ -29,6 +29,7 @@ namespace CRMApp
         {
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddTransient<UserManager<AppUser>>();
             services.AddIdentity<AppUser, IdentityRole>(options=>
             {
                 options.User.RequireUniqueEmail = true;
@@ -39,6 +40,7 @@ namespace CRMApp
                 options.Password.RequireDigit = false;
             }
             ).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            services.AddAuthorization();
             services.AddAuthentication();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -59,19 +61,20 @@ namespace CRMApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            
+           
             app.UseAuthentication();
-            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Company}/{action=Dashboard}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
 
                 routes.MapRoute(
-            name: "areas",
-            template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-          );
+                    name: "areas",
+                    template: "{area:exists}/{controller=Managment}/{action=Index}/{id?}"
+                            );
             });
         }
     }

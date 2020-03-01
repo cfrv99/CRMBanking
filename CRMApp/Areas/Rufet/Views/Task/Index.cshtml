@@ -1,35 +1,41 @@
-﻿@model List<JobTask>
+﻿@model CRMApp.Areas.Rufet.Models.ListOfTasksVM
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container">
+<h1>All Tasks</h1>
+    <div class="ml-3 col-9">
+        <div class="row">
+
+            @foreach (var item in Model.Tasks)
+            {
+
+                <form asp-action="TakeTask" asp-controller="Task" method="post">
 
 
-@foreach (var item in Model)
-{
+                    <div class="ml-3 card">
+                        <div class="card-body">
 
-    <form asp-action="TakeTask" asp-controller="Task" method="post">
+                            <p>@item.Name</p>
+                            <p>@item.Description</p>
+                            <p>@item.Status</p>
+                            <p>@item.CreatedAt</p>
+                            <p>@item.DeadLine</p>
+                            <p>@item.Amount</p>
+
+                            <input type="hidden" asp-route-taskId="@item.Id" asp-for="@item.Id" value="@item.Id" />
+
+                        </div>
+                    </div>
+
+                    <input asp-action="TakeTask" asp-controller="Task" type="submit" asp-route-taskId="@item.Id" asp-for="@item.Id" class="btn btn-primary ml-4" value="Take Task" />
+                </form>
 
 
-        <div class="card">
-            <div class="card-body">
-
-                <p>@item.Name</p>
-                <p>@item.Description</p>
-                <p>@item.Status</p>
-                <p>@item.CreatedAt</p>
-                <p>@item.DeadLine</p>
-                <p>@item.Amount</p>
-
-                <input type="hidden" asp-route-taskId="@item.Id" asp-for="@item.Id" value="@item.Id" />
-                 
-            </div>
+            }
         </div>
+    </div>
+</div>
 
-        <input asp-action="TakeTask" asp-controller="Task" type="submit" asp-route-taskId="@item.Id" asp-for="@item.Id" class="btn btn-primary" value="Take Task" />
-    </form>
 
-
-}
- 

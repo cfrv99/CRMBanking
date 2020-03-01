@@ -1,4 +1,5 @@
 ﻿using CRMApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CRMApp.Controllers
 {
+    [Authorize]
     public class ProductSaleController:Controller
     {
         private readonly AppDbContext appDbContext;

@@ -31,6 +31,11 @@ namespace CRMApp.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<StaffContract> StaffContracts { get; set; }
 
-
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Company>().HasOne(x => x.Creator).WithOne().HasForeignKey<Company>(p => p.CreatorId);
+            builder.Entity<Company>().HasMany(x => x.AppUsers);
+        }
     }
 }

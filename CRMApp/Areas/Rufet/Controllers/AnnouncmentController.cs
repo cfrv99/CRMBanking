@@ -117,7 +117,9 @@ namespace CRMApp.Areas.Rufet.Controllers
              
             appDbContext.Bids.ToList().Find(i => i.AnnouncmentWorkId == announcmentId).IsAccepted = true;
             appDbContext.SaveChanges();
-             
+            var bank = appDbContext.Banks.FirstOrDefault();
+            bank.Amount += 15;
+            appDbContext.SaveChanges();
             return RedirectToAction("GetAnnouncments");
         }
 

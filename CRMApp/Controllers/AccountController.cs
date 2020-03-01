@@ -35,7 +35,8 @@ namespace CRMApp.Controllers
             {
                 Name = viewModel.Name,
                 UserName = viewModel.UserName,
-                Email = viewModel.Email
+                Email = viewModel.Email,
+                Role = Role.Customer
             };
 
             var isUserHas = await userManager.FindByEmailAsync(viewModel.Email);
@@ -48,7 +49,7 @@ namespace CRMApp.Controllers
             if (result.Succeeded)
             {
                 await signInManager.PasswordSignInAsync(appUser, viewModel.Password, false, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("RequestTo", "Account");
             }
             ModelState.AddModelError("", "User Can not be created");
             return View(viewModel);
@@ -69,7 +70,11 @@ namespace CRMApp.Controllers
                     var result = await signInManager.PasswordSignInAsync(userExist, vM.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        if (userExist.Role == Role.Customer)
+                        {
+                            return RedirectToAction("Companies", "Home");
+                        }
+                        return RedirectToAction("Dashboard", "Company");
                     }
                     ModelState.AddModelError("", "user password or username incorrect");
                 }
@@ -86,7 +91,7 @@ namespace CRMApp.Controllers
         {
             signInManager.SignOutAsync();
 
-            return RedirectToAction();
+            return RedirectToAction("Dashboard", "Company");
         }
         [HttpPost]
         public async Task<IActionResult> RequestTo(RequestViewModel model)
@@ -104,7 +109,7 @@ namespace CRMApp.Controllers
                     };
                     context.Requests.Add(request);
                     context.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return Redirect("/Home/Companies");
                 }
                 return Unauthorized();
             }

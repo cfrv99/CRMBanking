@@ -11,14 +11,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CRMApp.Controllers
 {
-    [Authorize]
+    
     public class CompanyController : Controller
     {
         private AppDbContext context;
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
 
-        public CompanyController(AppDbContext context,UserManager<AppUser> userManager,
+        public CompanyController(AppDbContext context, UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager)
         {
             this.context = context;
@@ -27,16 +27,27 @@ namespace CRMApp.Controllers
         }
         public async Task<IActionResult> Dashboard()
         {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Unauthorized();
+                
+            }
             var user = await userManager.FindByNameAsync(User.Identity.Name);
+            if (user.Role != Role.Staff && user.Role != Role.SuperAdmin)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
             var companyId = user.CompanyId;
             var usersCount = userManager.Users.Where(i => i.CompanyId == companyId).ToList().Count();
             var taskCount = context.JobTasks.Where(i => i.CompanyId == companyId).ToList().Count();
             var ongoingTask = context.JobTasks.Where(i => i.CompanyId == companyId && i.Status == Status.Waiting).ToList().Count();
             DashboardViewModel viewModel = new DashboardViewModel
             {
-                UserCount=usersCount,
-                Tasks=taskCount,
-                OnGoingTask=ongoingTask
+                UserCount = usersCount,
+                Tasks = taskCount,
+                OnGoingTask = ongoingTask
             };
             return View(viewModel);
         }
@@ -52,7 +63,7 @@ namespace CRMApp.Controllers
             {
                 Claim claim = new Claim
                 {
-                    Name=vM.Name
+                    Name = vM.Name
                 };
                 context.Claims.Add(claim);
                 context.SaveChanges();
@@ -69,17 +80,25 @@ namespace CRMApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CompanyCreate(CompanyCreateVM vM)
         {
+            var currentUser = await userManager.FindByNameAsync(User.Identity.Name);
+            if (currentUser.CompanyId != null)
+            {
+                return BadRequest("You have already company");
+            }
+
             if (ModelState.IsValid)
             {
                 var company = new Company
                 {
                     Address = vM.Address,
                     Name = vM.Name,
-                    Description = vM.Description
+                    Description = vM.Description,
+                    CreatorId = currentUser.Id
                 };
-                var comp= context.Companies.Add(company).Entity;
+                var comp = context.Companies.Add(company).Entity;
+                currentUser.Role = Role.SuperAdmin;
+                context.SaveChanges();
 
-                var currentUser = await userManager.FindByNameAsync(User.Identity.Name);
                 currentUser.CompanyId = comp.Id;
                 await context.SaveChangesAsync();
                 var forbankPers = (currentUser.Amount * 3) / 100;
@@ -96,6 +115,16 @@ namespace CRMApp.Controllers
                 var bank = context.Banks.FirstOrDefault();
                 bank.Amount += forbankPers;
                 context.SaveChanges();
+                CompanyContract companyContract = new CompanyContract
+                {
+                    Amount = currentUser.Amount,
+                    Agreements = "I agree with you",
+                    CompanyId = comp.Id,
+                    MonthCount = 8
+                };
+                context.CompanyContracts.Add(companyContract);
+                context.SaveChanges();
+
                 return RedirectToAction("Dashboard");
             }
 
@@ -107,6 +136,7 @@ namespace CRMApp.Controllers
         }
         public IActionResult AddToCompanyUser()
         {
+
             ViewBag.Claims = new SelectList(context.Claims, "Id", "Name");
             return View(new CreateStaffForCompanyVM());
         }
@@ -114,28 +144,29 @@ namespace CRMApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCompanyUser(CreateStaffForCompanyVM vM)
         {
-            var cureentUser = await userManager.FindByNameAsync(User.Identity.Name); 
+            var cureentUser = await userManager.FindByNameAsync(User.Identity.Name);
             if (ModelState.IsValid)
             {
                 var persatnatgeToBank = (vM.Amount * 3) / 100;
-                vM.Amount=vM.Amount- (vM.Amount * 3) / 100;
+                vM.Amount = vM.Amount - (vM.Amount * 3) / 100;
                 AppUser user = new AppUser
                 {
                     Amount = vM.Amount,
-                    Email=vM.Email,
-                    Tel=vM.Tel,
-                    UserName=vM.UserName,
-                    CompanyId=cureentUser.CompanyId,
-                    Address=vM.Address,
-                    Name=vM.FirstName,
-                    Signature=vM.Signature,
-                    ClaimId=vM.ClaimId                   
+                    Email = vM.Email,
+                    Tel = vM.Tel,
+                    UserName = vM.UserName,
+                    CompanyId = cureentUser.CompanyId,
+                    Address = vM.Address,
+                    Name = vM.FirstName,
+                    Signature = vM.Signature,
+                    ClaimId = vM.ClaimId
                 };
 
                 var userExist = await userManager.FindByEmailAsync(vM.Email);
                 Random rnd = new Random();
                 string password = rnd.Next(1000000, 100000000).ToString();
-                if (userExist == null) {
+                if (userExist == null)
+                {
                     var result = await userManager.CreateAsync(user, password);
                     TempData["Password"] = password;
                     if (result.Succeeded)
@@ -145,7 +176,7 @@ namespace CRMApp.Controllers
                         var bank = context.Banks.First();
                         bank.Amount += persatnatgeToBank;
                         context.SaveChanges();
-                        
+
                         return RedirectToAction("Dashboard");
                     }
                     ModelState.AddModelError("", "User can not create");

@@ -95,3 +95,6 @@ C:\Users\Murad\Desktop\HackatHon\CRMApp\obj\Debug\netcoreapp2.2\Razor\Areas\Rufe
 C:\Users\Murad\Desktop\HackatHon\CRMApp\obj\Debug\netcoreapp2.2\Razor\Areas\Rufet\Views\Task\GetTakenTasks.cshtml.g.cs
 C:\Users\Murad\Desktop\HackatHon\CRMApp\obj\Debug\netcoreapp2.2\Razor\Areas\Rufet\Views\Task\Index.cshtml.g.cs
 C:\Users\Murad\Desktop\HackatHon\CRMApp\obj\Debug\netcoreapp2.2\Razor\Views\ProductSale\Sale.cshtml.g.cs
+C:\Users\Murad\Desktop\HackatHon\CRMApp\obj\Debug\netcoreapp2.2\CRMApp.csprojAssemblyReference.cache
+C:\Users\Murad\Desktop\HackatHon\CRMApp\obj\Debug\netcoreapp2.2\Razor\Views\Home\Companies.cshtml.g.cs
+C:\Users\Murad\Desktop\HackatHon\CRMApp\obj\Debug\netcoreapp2.2\Razor\Views\Home\GetContarcts.cshtml.g.cs

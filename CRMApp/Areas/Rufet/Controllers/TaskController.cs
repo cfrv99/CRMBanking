@@ -26,12 +26,17 @@ namespace CRMApp.Areas.Rufet.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var currentUser =await userManager.FindByNameAsync(User.Identity.Name);
+            var tasks = appDbContext.JobTasks.Where(i => i.CompanyId == currentUser.CompanyId).ToList();
+            ListOfTasksVM listOfTasksVM = new ListOfTasksVM()
+            {
+                Tasks = tasks
+            };
 
-            ListOfTasksVM listOfTasksVM = new ListOfTasksVM(appDbContext);
 
-            return View(listOfTasksVM.Tasks.FindAll(i=> i.Status != Status.Finished));
+            return View(listOfTasksVM);
         }
 
         [HttpGet]
@@ -52,7 +57,7 @@ namespace CRMApp.Areas.Rufet.Controllers
         {
             ViewBag.Claims = new SelectList(appDbContext.Claims, "Id", "Name");
 
-            
+            var currentUser = await userManager.FindByNameAsync(User.Identity.Name);
 
             var newAnnouncment = new JobTask()
             {
@@ -63,7 +68,8 @@ namespace CRMApp.Areas.Rufet.Controllers
                 DeadLine = taskVM.JobTask.DeadLine,
                 Description = taskVM.JobTask.Description,
                 Name = taskVM.JobTask.Name,
-                Status = Status.IsNotStarted
+                Status = Status.IsNotStarted,
+                CompanyId=currentUser.CompanyId
 
             };
 
@@ -112,7 +118,7 @@ namespace CRMApp.Areas.Rufet.Controllers
             appDbContext.Users.ToList().Find(i => i.Id == currentUser.Id).Amount += currentTask.Amount;
             appDbContext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index"); 
         }
 
         [HttpPost]

@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace CRMApp.Areas.Rufet.Controllers
 {
     [Area("Rufet")]
-    public class HomeController : Controller
+    public class ManagmentController : Controller
     {
         private readonly UserManager<AppUser> userManager;
         private SignInManager<AppUser> signInManager;
 
-        public HomeController(UserManager<AppUser> _userManager, SignInManager<AppUser> _signInManager)
+        public ManagmentController(UserManager<AppUser> _userManager, SignInManager<AppUser> _signInManager)
         {
             userManager = _userManager;
             signInManager = _signInManager;

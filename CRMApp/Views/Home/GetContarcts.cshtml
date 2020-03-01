@@ -1,0 +1,50 @@
+﻿@model CRMApp.ViewModels.ContractsVM
+@{
+    ViewData["Title"] = "GetContarcts";
+}
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Company Contracts</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Staff Contracts</a>
+    </li>
+    
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        @foreach (var item in Model.CompanyContracts)
+        {
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Company.Name</h5>
+                    
+                    <p class="card-text">@item.Agreements</p>
+                    <a href="#" class="card-link">Delete Contract</a>
+                    <a href="#" class="card-link">Refresh </a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        @foreach (var item in Model.StaffContracts)
+        { 
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        }
+    </div>
+    
+</div>
+
+
+
