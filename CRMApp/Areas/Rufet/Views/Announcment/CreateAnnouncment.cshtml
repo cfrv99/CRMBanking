@@ -1,0 +1,61 @@
+﻿@model CRMApp.Areas.Rufet.Models.AnnouncmentVM
+
+@{
+    ViewData["Title"] = "CreateAnnouncment";
+}
+
+<h1>CreateAnnouncment</h1>
+
+<h4>AnnouncementWork</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAnnouncment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="@Model.Announcement.Id" class="control-label"></label>
+                <input asp-for="@Model.Announcement.Id" class="form-control" />
+                <span asp-validation-for="@Model.Announcement.Id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="@Model.Announcement.Title" class="control-label"></label>
+                <input asp-for="@Model.Announcement.Title" class="form-control" />
+                <span asp-validation-for="@Model.Announcement.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Announcement.Description" class="control-label"></label>
+                <input asp-for="@Model.Announcement.Description" class="form-control" />
+                <span asp-validation-for="@Model.Announcement.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Announcement.MinSalary" class="control-label"></label>
+                <input asp-for="@Model.Announcement.MinSalary" class="form-control" />
+                <span asp-validation-for="@Model.Announcement.MinSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <select asp-items="@ViewBag.Claims" asp-for="@Model.ClaimId">
+                    <option selected disabled > </option>
+                  
+                </select>
+
+               
+
+                @*<label asp-for="ClaimId" class="control-label"></label>
+                <input asp-for="ClaimId" class="form-control" />
+                <span asp-validation-for="ClaimId" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

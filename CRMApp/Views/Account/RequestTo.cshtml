@@ -1,0 +1,71 @@
+﻿@model CRMApp.ViewModels.RequestViewModel
+
+@{
+    ViewData["Title"] = "RequestTo";
+}
+
+@*<h1>RequestTo</h1>
+
+    <h4>RequestViewModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="RequestTo">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+<div id="middle">
+    <form asp-action="RequestTo" class="form">
+        <div class="fromheading">
+            <!-- <img height="50" width="200" src="../../assets/media/freelance-logo.png" alt=""> -->
+        </div>
+        <span class="formwelcome">Request To Bank</span>
+        
+        
+        <div class="forminputs col-s-12 col-xs-12">
+            <input required asp-for="Title" class="focus email col-xs-12 col-s-12 rounded" minlength="5" placeholder="Name" />
+            <div>
+
+                <textarea type="text" class="focus w-100 p-5 rounded tbx" id="description" required asp-for="Description" placeholder="Description Your Idea"
+                          minlength="10"></textarea>
+
+            </div>
+
+
+
+            <input required minlength="5" name="company" class="focus col-xs-12 col-s-12 rounded" placeholder="Company name" />
+
+        </div>
+
+
+        <div class="login col-xs-12 col-s-12" id="nfb">
+            <button type="submit" class="col-s-12 col-xs-12 rounded btn btn-login">
+                Get Investment
+            </button>
+        </div>
+        <hr class="w-100" />
+        
+    </form>
+
+</div>
+
+

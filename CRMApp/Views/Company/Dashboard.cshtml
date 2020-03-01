@@ -1,0 +1,198 @@
+﻿@model CRMApp.ViewModels.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+
+<div class="page-section">
+    <!-- .section-block -->
+    <div class="section-block">
+        <!-- metric row -->
+        <div class="metric-row">
+            <div class="col-lg-9">
+                <div class="metric-row metric-flush">
+                    <!-- metric column -->
+                    <div class="col">
+                        <!-- .metric -->
+                        <a href="user-teams.html" class="metric metric-bordered align-items-center">
+                            <h2 class="metric-label"> Staffs </h2>
+                            <p class="metric-value h3">
+                                <sub>
+                                    <i class="oi oi-people"></i>
+                                </sub>
+                                <span class="value">@Model.UserCount</span>
+                            </p>
+                        </a>
+                        <!-- /.metric -->
+                    </div>
+                    <!-- /metric column -->
+                    <!-- metric column -->
+                    <div class="col">
+                        <!-- .metric -->
+                        <a href="user-projects.html" class="metric metric-bordered align-items-center">
+                            <h2 class="metric-label"> Products </h2>
+                            <p class="metric-value h3">
+                                <sub>
+                                    <i class="oi oi-fork"></i>
+                                </sub>
+                                <span class="value">@Model.Products</span>
+                            </p>
+                        </a>
+                        <!-- /.metric -->
+                    </div>
+                    <!-- /metric column -->
+                    <!-- metric column -->
+                    <div class="col">
+                        <!-- .metric -->
+                        <a href="user-tasks.html" class="metric metric-bordered align-items-center">
+                            <h2 class="metric-label"> Active Tasks </h2>
+                            <p class="metric-value h3">
+                                <sub>
+                                    <i class="fa fa-tasks"></i>
+                                </sub>
+                                <span class="value">@Model.Tasks</span>
+                            </p>
+                        </a>
+                        <!-- /.metric -->
+                    </div>
+                    <!-- /metric column -->
+                </div>
+            </div>
+            <!-- metric column -->
+            <div class="col-lg-3">
+                <!-- .metric -->
+                <a href="user-tasks.html" class="metric metric-bordered">
+                    <div class="metric-badge">
+                        <span class="badge badge-lg badge-success">
+                            <span class="oi oi-media-record pulse mr-1"></span> ONGOING TASKS
+                        </span>
+                    </div>
+                    <p class="metric-value h3">
+                        <sub>
+                            <i class="oi oi-timer"></i>
+                        </sub>
+                        <span class="value">@Model.Tasks</span>
+                    </p>
+                </a>
+                <!-- /.metric -->
+            </div>
+            <!-- /metric column -->
+        </div>
+        <!-- /metric row -->
+    </div>
+    <!-- /.section-block -->
+    <!-- grid row -->
+    <div class="row">
+        <!-- grid column -->
+        <div class="col-12 col-lg-12 col-xl-4">
+            <!-- .card -->
+            <section class="card card-fluid">
+                <!-- .card-body -->
+                <div class="card-body">
+                    <!-- .d-flex -->
+                    <div class="d-flex align-items-center mb-3">
+                        <h3 class="card-title mr-auto"> Completion Tasks </h3>
+                        <!-- .card-title-control -->
+                        <div class="card-title-control">
+                            <!-- .dropdown -->
+                            <div class="form-group dropdown">
+                                <button class="btn btn-light" data-toggle="dropdown">
+                                    <span>This Week</span>
+                                    <i class="fa fa-fw fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-arrow dropdown-arrow-right"></div>
+                                <!-- .dropdown-menu -->
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- .list-group -->
+                                    <div class="list-group list-group-flush">
+                                        <!-- .list-group-item -->
+                                        <a href="#" class="list-group-item justify-content-between">
+                                            <span>Today</span>
+                                            <span class="text-muted">Feb 26</span>
+                                        </a>
+                                        <!-- /.list-group-item -->
+                                        <!-- .list-group-item -->
+                                        <a href="#" class="list-group-item justify-content-between">
+                                            <span>Yesterday</span>
+                                            <span class="text-muted">Feb 27</span>
+                                        </a>
+                                        <!-- /.list-group-item -->
+                                        <!-- .list-group-item -->
+                                        <a href="#" class="list-group-item justify-content-between">
+                                            <span>This Week</span>
+                                            <span class="text-muted">Feb 21-27</span>
+                                        </a>
+                                        <!-- /.list-group-item -->
+                                        <!-- .list-group-item -->
+                                        <a href="#" class="list-group-item justify-content-between">
+                                            <span>This Month</span>
+                                            <span class="text-muted">Mar 1-31</span>
+                                        </a>
+                                        <!-- /.list-group-item -->
+                                        <!-- .list-group-item -->
+                                        <a href="#" class="list-group-item justify-content-between">
+                                            <span>This Year</span>
+                                            <span class="text-muted">2020</span>
+                                        </a>
+                                        <!-- /.list-group-item -->
+                                        <!-- datepicker:range -->
+                                        <input id="flatpickr" type="hidden" class="form-control d-none">
+                                        <!-- /datepicker:range -->
+                                    </div>
+                                    <!-- /.list-group -->
+                                </div>
+                                <!-- /.dropdown-menu -->
+                            </div>
+                            <!-- /.dropdown -->
+                        </div>
+                        <!-- /.card-title-control -->
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="chartjs" style="height: 283px">
+                        <canvas id="completion-tasks"></canvas>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </section>
+            <!-- /.card -->
+        </div>
+        <!-- /grid column -->
+        <!-- grid column -->
+        <div class="col-12 col-lg-6 col-xl-4">
+            <!-- .card -->
+            <section class="card card-fluid">
+                <!-- .card-body -->
+                <div class="card-body">
+                    <h3 class="card-title"> Tasks Performance </h3>
+                    <!-- easy-pie-chart -->
+                    <div class="text-center pt-3">
+                        <div class="chart-inline-group" style="height:214px">
+                            <div class="easyPieChart" data-percent="60" data-size="214" data-barcolor="#346CB0" data-trackcolor="false" data-scalecolor="false" data-rotate="225"></div>
+                            <div class="easyPieChart" data-percent="50" data-size="174" data-barcolor="#00A28A" data-trackcolor="false" data-scalecolor="false" data-rotate="225"></div>
+                            <div class="easyPieChart" data-percent="75" data-size="134" data-barcolor="#5F4B8B" data-trackcolor="false" data-scalecolor="false" data-rotate="225"></div>
+                        </div>
+                    </div>
+                    <!-- /easy-pie-chart -->
+                </div>
+                <!-- /.card-body -->
+                <!-- .card-footer -->
+                <div class="card-footer">
+                    <div class="card-footer-item">
+                        <i class="fa fa-fw fa-circle text-indigo"></i> 100%
+                        <div class="text-muted small"> Assigned </div>
+                    </div>
+                    <div class="card-footer-item">
+                        <i class="fa fa-fw fa-circle text-purple"></i> 75%
+                        <div class="text-muted small"> Completed </div>
+                    </div>
+                    <div class="card-footer-item">
+                        <i class="fa fa-fw fa-circle text-teal"></i> 60%
+                        <div class="text-muted small"> Active </div>
+                    </div>
+                </div>
+                <!-- /.card-footer -->
+            </section>
+            <!-- /.card -->
+        </div>
+    </div>
+</div>

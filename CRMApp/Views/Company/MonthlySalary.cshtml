@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "MonthlySalary";
+}
+
+    <div class="page-section">
+        <!-- grid row -->
+        <div class="row">
+            <!-- grid column -->
+            <div class="col-lg-12">
+                <!-- .card -->
+                <section class="card card-fluid">
+                    <!-- .card-body -->
+                    <div class="card-body">
+                        <canvas id="canvas-line" class="chartjs"></canvas>
+                    </div>
+                    <!-- /.card-body -->
+                    <!-- .card-footer -->
+                    <footer class="card-footer">
+                        <a href="#" id="randomizeData" class="card-footer-item card-footer-item-bordered text-muted">
+                            Randomize
+                            <span class="d-none d-sm-inline">Data</span>
+                        </a>
+                        <a href="#" id="addData" class="card-footer-item card-footer-item-bordered text-muted">
+                            Add
+                            <span class="d-none d-sm-inline">Data</span>
+                        </a>
+                        <a href="#" id="removeData" class="card-footer-item card-footer-item-bordered text-muted">
+                            Remove
+                            <span class="d-none d-sm-inline">Data</span>
+                        </a>
+                    </footer>
+                    <!-- /.card-footer -->
+                </section>
+                <!-- /.card -->
+            </div>
+
+            <!-- /grid column -->
+        </div>
+        <!-- /grid row -->
+    </div>
+

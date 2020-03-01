@@ -1,0 +1,76 @@
+﻿@model CRMApp.ViewModels.CompanyCreateVM
+
+@{
+    ViewData["Title"] = "CompanyCreate";
+}
+
+@*<h1>CompanyCreate</h1>
+
+    <h4>CompanyCreateVM</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CompanyCreate">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+<div id="middle">
+    <form asp-action="CompanyCreate" class="form">
+        <div class="fromheading">
+            <!-- <img height="50" width="200" src="../../assets/media/freelance-logo.png" alt=""> -->
+        </div>
+        <span class="formwelcome">Create Your Company</span>
+        
+        
+        <div class="forminputs col-s-12 col-xs-12">
+            <input required asp-for="Name" class="focus email col-xs-12 col-s-12 rounded" minlength="5" placeholder="Company Name" />
+            <input required minlength="5" asp-for="Address" class="focus col-xs-12 col-s-12 rounded" placeholder="Address" />
+            
+            <div>
+
+                <textarea type="text" class="focus w-100 p-5 rounded tbx" id="description" required asp-for="Description" placeholder="Description Your Idea"
+                          minlength="10"></textarea>
+
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class="login col-xs-12 col-s-12" id="nfb">
+            <button type="submit" class="col-s-12 col-xs-12 rounded btn btn-login">
+                Create Company
+            </button>
+        </div>
+        <hr class="w-100" />
+        
+    </form>
+</div>
+
+

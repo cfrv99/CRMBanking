@@ -1,0 +1,37 @@
+﻿@model List<JobTask>
+@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<h1>Index</h1>
+
+
+@foreach (var item in Model)
+{
+
+<form asp-action="TakeTask" asp-controller="Task" method="post">
+
+
+    <div class="card">
+        <div class="card-body">
+
+            <p>@item.Name</p>
+            <p>@item.Description</p>
+            <p>@item.Status</p>
+            <p>@item.CreatedAt</p>
+            <p>@item.DeadLine</p>
+            <p>@item.Amount</p>
+
+            <input type="hidden" asp-route-taskId="@item.Id" asp-for="@item.Id" value="@item.Id" />
+
+        </div>
+    </div>
+    
+    <input asp-action="FinishTask" asp-controller="Task" type="submit" asp-route-taskId="@item.Id" asp-for="@item.Id" class="btn btn-primary" value="Finish Task" />
+    <input asp-action="CancelTask" asp-controller="Task" type="submit" asp-route-taskId="@item.Id" asp-for="@item.Id" class="btn btn-danger" value="Cancel Task" />
+
+</form>
+
+
+}
+

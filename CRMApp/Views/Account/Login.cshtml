@@ -1,0 +1,62 @@
+﻿@model CRMApp.ViewModels.LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@*<h1>Login</h1>
+
+    <h4>LoginVM</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+<div id="middle" >
+
+    <form asp-action="Login" class="form">
+        <div class="fromheading">
+            <!-- <img height="50" width="200" src="../../assets/media/freelance-logo.png" alt=""> -->
+        </div>
+        <span class="formwelcome">Welcome Back</span>
+
+        <div class="fromdivider">
+            <span>OR</span>
+        </div>
+        <div class="forminputs">
+            <input class="focus email col-s-12 rounded" placeholder="Email address" asp-for="Email" />
+            <input class="focus col-s-12 rounded" type="password" placeholder="Password" asp-for="Password" />
+        </div>
+        <div class="login" id="nfb">
+            <button class="col-s-12 rounded btn btn-login">
+                Login In
+            </button>
+        </div>
+        <hr class="w-100" />
+        <span class="redirectSignUp">
+            Don't have an account? <a class="text-underlineonhover">Sign up</a>
+        </span>
+    </form>
+</div>
+
+

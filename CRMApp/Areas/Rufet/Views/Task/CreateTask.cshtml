@@ -1,0 +1,71 @@
+﻿@model CRMApp.Areas.Rufet.Models.TaskVM
+
+@{
+    ViewData["Title"] = "CreateTask";
+}
+
+<h1>CreateTask</h1>
+
+<h4>JobTask</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateTask">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="@Model.JobTask.Id" class="control-label"></label>
+                <input asp-for="@Model.JobTask.Id" class="form-control" />
+                <span asp-validation-for="@Model.JobTask.Id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="@Model.JobTask.Name" class="control-label"></label>
+                <input asp-for="@Model.JobTask.Name" class="form-control" />
+                <span asp-validation-for="@Model.JobTask.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.JobTask.Description" class="control-label"></label>
+                <input asp-for="@Model.JobTask.Description" class="form-control" />
+                <span asp-validation-for="@Model.JobTask.Description" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="@Model.JobTask.Status" class="control-label"></label>
+                <input asp-for="@Model.JobTask.Status" class="form-control" />
+                <span asp-validation-for="@Model.JobTask.Status" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="@Model.JobTask.Amount" class="control-label"></label>
+                <input asp-for="@Model.JobTask.Amount" class="form-control" />
+                <span asp-validation-for="@Model.JobTask.Amount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.JobTask.CreatedAt" class="control-label"></label>
+                <input asp-for="@Model.JobTask.CreatedAt" class="form-control" />
+                <span asp-validation-for="@Model.JobTask.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.JobTask.DeadLine" class="control-label"></label>
+                <input asp-for="@Model.JobTask.DeadLine" class="form-control" />
+                <span asp-validation-for="@Model.JobTask.DeadLine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <select asp-items="@ViewBag.Claims" asp-for="@Model.ClaimId">
+                    <option selected disabled> </option>
+
+                </select>
+                 
+                 
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

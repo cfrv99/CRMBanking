@@ -1,0 +1,86 @@
+﻿@model CRMApp.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@*<h1>Register</h1>
+
+<h4>RegisterViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+    <div id="middle">
+        <form asp-action="Register" class="form">
+            <div class="fromheading">
+                <!-- <img height="50" width="200" src="../../assets/media/freelance-logo.png" alt=""> -->
+            </div>
+            <span class="formwelcome">Welcome Back</span>
+            <div class="login col-xs-12 " id="fb">
+                <button class="col-s-12 col-xs-12 rounded btn btn-fb">Continue with Facebook</button>
+            </div>
+            <div class="fromdivider">
+                <span>OR</span>
+            </div>
+            <div class="forminputs col-s-12 col-xs-12">
+                <input required asp-for="Name" class="focus email col-xs-12 col-s-12 rounded" minlength="5" placeholder="Name" />
+                <input required minlength="5" asp-for="UserName" class="focus col-xs-12 col-s-12 rounded" placeholder="Username" />
+                <input required asp-for="Email" class="focus email col-xs-12 col-s-12 rounded" minlength="5" placeholder="Email address" />
+                <input required minlength="5" asp-for="Password" class="focus col-xs-12 col-s-12 rounded" placeholder="Password" type="password" />
+
+
+                
+
+            </div>
+
+
+            <div class="login col-xs-12 col-s-12" id="nfb">
+                <button class="col-s-12 col-xs-12 rounded btn btn-login">
+                    Join EyeRemote
+                </button>
+            </div>
+            <hr class="w-100" />
+            <span class="redirectSignUp">
+                Already have an account? <a class="text-underlineonhover">
+                    Log
+                    in
+                </a>
+            </span>
+        </form>
+    </div>
+
+

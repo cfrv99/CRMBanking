@@ -1,0 +1,41 @@
+﻿@model CRMApp.ViewModels.CreateClaimVM
+
+@{
+    ViewData["Title"] = "CreateClaim";
+}
+
+<section id="base-style" class="card">
+    <!-- .card-body -->
+    <div class="card-body  col-5">
+        <!-- .form -->
+        <form asp-action="CreateClaim">
+            <!-- .fieldset -->
+            <fieldset>
+                <legend>Create User For My Company</legend>
+                <!-- .form-group -->
+                <!-- /.form-group -->
+                <!-- .form-group -->
+                <div class="form-group">
+                    <label for="tf4">Create Claim</label>
+                    <div class="has-clearable">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">
+                                <i class="fa fa-times-circle"></i>
+                            </span>
+                        </button>
+                        <input type="text" class="form-control" asp-for="Name" placeholder="Claim" value="">
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Create Claim" />
+                </div>
+                <!-- /.form-group -->
+            </fieldset>
+            <!-- /.fieldset -->
+        </form>
+        <!-- /.form -->
+    </div>
+</section>
+

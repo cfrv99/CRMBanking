@@ -1,0 +1,32 @@
+﻿@model Bid
+@{
+    ViewData["Title"] = "GetBid";
+}
+
+<h1>GetBid</h1>
+
+
+<form asp-action="GetBid" asp-controller="Announcment" method="post">
+
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <p>@Model.AnnouncmentWork.Title</p>
+            <p>@Model.AnnouncmentWork.Description</p>
+            <p>@Model.AppUser.UserName</p>
+
+            <p>@Model.IsAccepted</p>
+
+
+            <input type="hidden" asp-route-bidId="@Model.Id" asp-for="@Model.Id" value="@Model.Id" />
+
+        </div>
+    </div>
+
+    <input asp-action="ApplyBid" asp-controller="Task" type="submit" asp-route-bidId="@Model.Id" asp-for="@Model.Id" class="btn btn-primary" value="Apply Task" />
+    <input asp-action="RejectBid" asp-controller="Task" type="submit" asp-route-bidId="@Model.Id" asp-for="@Model.Id" class="btn btn-danger" value="Reject Task" />
+
+</form>
+

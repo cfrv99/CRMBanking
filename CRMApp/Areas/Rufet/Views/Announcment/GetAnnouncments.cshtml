@@ -1,0 +1,28 @@
+﻿@model List<AnnouncementWork>
+
+@{
+    ViewData["Title"] = "GetAnnouncments";
+}
+
+<h1>GetAnnouncments</h1>
+
+@foreach (var announcementWork in Model)
+{
+
+    <div class="card">
+        <div class="card-body">
+
+            <form asp-action="SendBidToAnnouncment" asp-controller="Announcment" method="post">
+
+                <p>@announcementWork.Title</p>
+                <p>@announcementWork.Description</p>
+                <p>@announcementWork.MinSalary</p>
+
+              @*  <input type="hidden" asp-for="@announcementWork.Id" asp-route-announcmentId="@announcementWork.Id" />*@
+                <input asp-action="SendBidToAnnouncment" asp-controller="Announcment" asp-route-announcmentId="@announcementWork.Id" class="btn btn-primary" value="Apply" type="submit" />
+            </form>
+        </div>
+    </div>
+
+
+}

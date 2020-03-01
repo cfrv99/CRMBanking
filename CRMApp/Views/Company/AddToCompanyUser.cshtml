@@ -1,0 +1,128 @@
+﻿@model CRMApp.Models.CreateStaffForCompanyVM
+
+@{
+    ViewData["Title"] = "AddToCompanyUser";
+}
+
+<section id="base-style" class="card">
+<!-- .card-body -->
+<div class="card-body  col-5">
+    <!-- .form -->
+    <form asp-action="AddToCompanyUser">
+        <!-- .fieldset -->
+        <fieldset>
+            <legend>Create User For My Company</legend>
+            <!-- .form-group -->
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group">
+                <label for="tf4">Username</label>
+                <div class="has-clearable">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times-circle"></i>
+                        </span>
+                    </button>
+                    <input type="text" class="form-control" asp-for="UserName" placeholder="UserName" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tf4">Firstname</label>
+                <div class="has-clearable">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times-circle"></i>
+                        </span>
+                    </button>
+                    <input type="text" class="form-control" asp-for="FirstName" placeholder="Firstname" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tf4">Surname</label>
+                <div class="has-clearable">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times-circle"></i>
+                        </span>
+                    </button>
+                    <input type="text" class="form-control" asp-for="Surname" placeholder="Surname" value="">
+                </div>
+            </div>
+            <!-- /.form-group -->
+            <!-- .form-group -->
+            <div class="form-group">
+                <label asp-for="Description">Textarea</label>
+                <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tf2">Amount</label>
+                <input type="number" class="form-control" asp-for="Amount" placeholder="Amount (to the nearest dollar)">
+            </div>
+            <div class="form-group">
+                <label for="tf4">Email</label>
+                <div class="has-clearable">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times-circle"></i>
+                        </span>
+                    </button>
+                    <input type="text" class="form-control" asp-for="Email" placeholder="Email Address" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tf4">Tel</label>
+                <div class="has-clearable">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times-circle"></i>
+                        </span>
+                    </button>
+                    <input type="text" class="form-control" asp-for="Tel" placeholder="Tel" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tf4">Address</label>
+                <div class="has-clearable">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times-circle"></i>
+                        </span>
+                    </button>
+                    <input type="text" class="form-control" asp-for="Address" placeholder="Address" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tf4">Sinature</label>
+                <div class="has-clearable">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times-circle"></i>
+                        </span>
+                    </button>
+                    <input type="text" class="form-control" asp-for="Signature" placeholder="Signature" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label" for="selDefault">Role</label>
+                <select class="custom-select" asp-for="ClaimId" asp-items="ViewBag.Claims">
+                    <option> Default select </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-info" value="Create User" />
+            </div>
+            <!-- /.form-group -->
+        </fieldset>
+        <!-- /.fieldset -->
+    </form>
+    <!-- /.form -->
+</div>
+<!-- /.card-body -->
+<!-- .card-body -->
+
+    <!-- /.form -->
+
+<!-- /.card-body -->
+                </section>
